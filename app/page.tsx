@@ -1,8 +1,18 @@
 "use client"
 import React from 'react';
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession, SessionProvider } from "next-auth/react";
 
 export default function Home() {
+  const session = useSession();
+
+  return (
+    <SessionProvider>
+      <OtherHome />
+    </SessionProvider>
+  )
+}
+
+const OtherHome = () => {
   const session = useSession();
 
   return (
